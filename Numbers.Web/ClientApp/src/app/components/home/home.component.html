@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="row border">
+    <div class="col border m-3 p-2">
+      <form (ngSubmit)="start()" [formGroup]="batchForm">
+
+        <div class="mb-3">
+          <label for="noOfBatches" class="form-label">Number of Batches</label>
+          <input type="number" class="form-control" id="noOfBatches" aria-describedby="noOfBatchesHelp" formControlName="numberOfBatches">
+          <div id="noOfBatchesHelp" class="form-text"><small>Enter the numbers of batches that needs to be generated</small></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="noPerBatch" class="form-label">Numbers Per Batch</label>
+          <input type="number" class="form-control" id="noPerBatch" aria-describedby="noPerBatchHelp" formControlName="numbersPerBatch">
+          <div id="noPerBatchHelp" class="form-text"><small>Enter the numbers per batches</small></div>
+        </div>
+
+        <div class="d-flex">
+          <div class="m-0">
+            <button type="submit" class="btn" [class.btn-primary]="batchForm.valid && canStartNewBatch" [class.btn-light]="!batchForm.valid" [disabled]="!batchForm.valid">
+              Start
+            </button>
+          </div>
+          <div class="m-0 ml-2">
+            <button type="button" class="btn btn-danger" [class.d-none]="!canClear" (click)="clear()">
+              Clear
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col border m-3 p-2">
+      <div class="row">
+        <div class="col-12 p-3">
+          <b>Current Status:</b> {{CurrentStatus}}
+        </div>
+        <div class="col-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Batch #</th>
+                <th scope="col">Generated Numbers</th>
+                <th scope="col">Multiplied Numbers</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let batch of batches">
+                <th scope="row">{{ batch.batchNumber}}</th>
+                <td>
+                  <ul class="list-group list-group-flush">
+                    <li *ngFor="let n of batch.generatedNumbers" class="list-group-item">
+                      {{ n }}
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  <ul class="list-group list-group-flush">
+                    <li *ngFor="let n of batch.multipliedNumbers" class="list-group-item">
+                      {{ n }}
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  {{ batch.total }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div>
+    <p class="text-success">Last Batch Details</p>
+  </div>
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Number of Batches</th>
+          <th scope="col">Number per Batches</th>
+          <th scope="col">Generated Numbers</th>
+          <th scope="col">Multiplied Numbers</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let batch of lastBatchDetails">
+          <th scope="row">{{ batch.numberOfBatches}}</th>
+          <th scope="row">{{ batch.numberPerBatches}}</th>
+          <td>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let n of batch.generatedNumbers" class="list-group-item">
+                {{ n.generatedNumber }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let n of batch.multipliedNumbers" class="list-group-item">
+                {{ n.multipliedNumber }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            {{ batch.batchTotal }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
