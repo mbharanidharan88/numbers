@@ -5,6 +5,7 @@ ToDos:
 3. Have to introduce Service to Repository
 4. Have to swagger docs for APIs
 5. Properly Handle exceptions
+6. Show Last Batch Details Menu only when available - Done
 
 Project is hosted in GitHub:
 https://github.com/mbharanidharan88/numbers
