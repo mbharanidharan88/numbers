@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { BatchResponse } from '../models/batch-response.model';
 import { BatchDetail } from '../models/batch-detail.model';
 
@@ -8,6 +8,8 @@ import { BatchDetail } from '../models/batch-detail.model';
   providedIn: 'root'
 })
 export class BatchService {
+
+  public lastBatchMenuSubject: Subject<boolean> = new BehaviorSubject<boolean>(true);  
 
   constructor(private http: HttpClient,
               @Inject('BASE_URL') private baseUrl: string) {

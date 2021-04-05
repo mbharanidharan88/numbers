@@ -77,6 +77,7 @@ export class HomeComponent {
 
         if (result) {
           this.newBatchSubject.next(true);
+          this.service.lastBatchMenuSubject.next(true);
           this.batches = [];
           this.initForm();
         }
@@ -143,6 +144,7 @@ export class HomeComponent {
 
   private initSubscriptions() {
     this.startNewBatch.subscribe(value => this.canStartNewBatch = value);
+    this.service.lastBatchMenuSubject.next(false);
   }
 }
 
